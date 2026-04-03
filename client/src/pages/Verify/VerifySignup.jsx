@@ -24,8 +24,8 @@ const VerifySignup = () => {
       setVerifying(true);
 
       const res = await axios.post(
-        "http://localhost:5000/api/v1/auth/verify/signup/otp",
-        { email, otp }
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/auth/verify/signup/otp`,
+        { email, otp },
       );
 
       if (res?.data?.success) {

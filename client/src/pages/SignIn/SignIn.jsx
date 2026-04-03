@@ -27,11 +27,11 @@ const SignIn = () => {
     try {
       dispatch(signInStart());
       const res = await axios.post(
-        "http://localhost:5000/api/v1/auth/signin",
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/auth/signin`,
         { email, password },
         {
           withCredentials: true,
-        }
+        },
       );
 
       if (res?.data?.success) {

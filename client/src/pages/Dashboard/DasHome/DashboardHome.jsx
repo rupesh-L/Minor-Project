@@ -3,16 +3,14 @@ import { useOutletContext } from "react-router-dom";
 const DashboardHome = () => {
   const { books, orders } = useOutletContext();
 
-  console.log(orders);
-
   const pendingOrders = orders.filter(
     (o) => o.orderStatus === "PENDING",
   ).length;
   const outOfStockBooks = books.filter((b) => b.stock === 0).length;
-  // 1️⃣ Filter delivered orders
+  // 1 Filter delivered orders
   const deliveredOrders = orders.filter((o) => o.orderStatus === "DELIVERED");
 
-  // 2️⃣ Calculate total revenue
+  // 2 Calculate total revenue
   const totalRevenueGenerated = deliveredOrders.reduce(
     (acc, order) => acc + order.totalPrice,
     0,

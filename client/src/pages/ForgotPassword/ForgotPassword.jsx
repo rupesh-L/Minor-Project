@@ -18,10 +18,10 @@ const ForgotPassword = () => {
       setLoading(true);
 
       const res = await axios.post(
-        "http://localhost:5000/api/v1/auth/password/forgot",
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/auth/password/forgot`,
         {
           email,
-        }
+        },
       );
 
       if (res?.data?.success) {
@@ -30,7 +30,7 @@ const ForgotPassword = () => {
       }
     } catch (error) {
       toast.error(
-        error?.response?.data?.message || "Failed to send reset link"
+        error?.response?.data?.message || "Failed to send reset link",
       );
     } finally {
       setLoading(false);

@@ -20,7 +20,7 @@ const SearchPage = () => {
     try {
       setLoading(true);
       const res = await axios.get(
-        `http://localhost:5000/api/v1/book/search?q=${encodeURIComponent(
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/book/search?q=${encodeURIComponent(
           query,
         )}&page=${page}&limit=10`,
       );

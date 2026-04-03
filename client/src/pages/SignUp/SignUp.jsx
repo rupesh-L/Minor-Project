@@ -32,15 +32,15 @@ const SignUp = () => {
       setSubmitting(true);
 
       const res = await axios.post(
-        "http://localhost:5000/api/v1/auth/signup",
-        formData
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/auth/signup`,
+        formData,
       );
 
       if (res?.data?.success) {
         localStorage.setItem("pendingEmail", formData.email);
 
         toast.success(
-          res?.data?.message || "Signup successful. OTP sent to your email."
+          res?.data?.message || "Signup successful. OTP sent to your email.",
         );
 
         navigate("/signin");
@@ -65,7 +65,7 @@ const SignUp = () => {
 
       const res = await axios.post(
         "http://localhost:5000/api/v1/user/otp/resend",
-        { email: pendingEmail }
+        { email: pendingEmail },
       );
 
       if (res?.data?.success) {
@@ -73,7 +73,7 @@ const SignUp = () => {
       }
     } catch (error) {
       toast.error(
-        error?.response?.data?.message || "Failed to resend OTP. Try again."
+        error?.response?.data?.message || "Failed to resend OTP. Try again.",
       );
     } finally {
       setResending(false);

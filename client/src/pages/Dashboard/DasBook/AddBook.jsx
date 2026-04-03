@@ -65,12 +65,12 @@ const AddBook = () => {
       }
 
       const res = await axios.post(
-        "http://localhost:5000/api/v1/book/create",
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/book/create`,
         formData,
         {
           withCredentials: true,
           headers: { "Content-Type": "multipart/form-data" },
-        }
+        },
       );
 
       if (res?.data?.success) {

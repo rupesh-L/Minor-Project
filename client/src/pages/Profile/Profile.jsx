@@ -26,9 +26,12 @@ const Profile = () => {
   const fetchProfile = async () => {
     try {
       setLoading(true);
-      const res = await axios.get("http://localhost:5000/api/v1/user/profile", {
-        withCredentials: true,
-      });
+      const res = await axios.get(
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/user/profile`,
+        {
+          withCredentials: true,
+        },
+      );
 
       if (res?.data?.success) {
         setFormData({
@@ -64,7 +67,7 @@ const Profile = () => {
       setUpdating(true);
 
       const res = await axios.put(
-        "http://localhost:5000/api/v1/user/profile/update",
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/user/profile/update`,
         formData,
         { withCredentials: true },
       );
@@ -72,7 +75,7 @@ const Profile = () => {
       if (res?.data?.success) {
         toast.success(res.data.message);
 
-        // ⚠️ Email updated → backend clears token
+        //  Email updated → backend clears token
         if (res.data.message.includes("verify")) {
           localStorage.setItem("pendingEmail", formData.email);
           toast.info("Please verify your email again");

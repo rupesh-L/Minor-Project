@@ -28,8 +28,8 @@ const VerifyResetPassword = () => {
       setLoading(true);
 
       const res = await axios.post(
-        "http://localhost:5000/api/v1/auth/verify/password/otp",
-        { email, ...formData }
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/auth/verify/password/otp`,
+        { email, ...formData },
       );
 
       if (res?.data?.success) {

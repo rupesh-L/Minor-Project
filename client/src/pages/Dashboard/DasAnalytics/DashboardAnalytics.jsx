@@ -40,17 +40,17 @@ const DashboardAnalytics = () => {
     try {
       setLoading(true);
       const salesRes = await axios.get(
-        `http://localhost:5000/api/v1/admin/analytics/sales/${selectedYear}`,
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/admin/analytics/sales/${selectedYear}`,
         { withCredentials: true },
       );
 
       const topBookRes = await axios.get(
-        `http://localhost:5000/api/v1/admin/analytics/top/books/sales/${selectedYear}`,
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/admin/analytics/top/books/sales/${selectedYear}`,
         { withCredentials: true },
       );
 
       const chartRes = await axios.get(
-        `http://localhost:5000/api/v1/admin/analytics/order/status/chart/${selectedYear}`,
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/admin/analytics/order/status/chart/${selectedYear}`,
         {
           withCredentials: true,
         },
@@ -78,7 +78,7 @@ const DashboardAnalytics = () => {
     try {
       setAiLoading(true);
       const res = await axios.get(
-        `http://localhost:5000/api/v1/admin/analytics/ai/insights/${selectedYear}`,
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/admin/analytics/ai/insights/${selectedYear}`,
         { withCredentials: true },
       );
 

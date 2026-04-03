@@ -12,13 +12,16 @@ const Cart = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
 
-  // ✅ Fetch cart
+  //  Fetch cart
   const fetchCart = async () => {
     try {
       setLoading(true);
-      const res = await axios.get("http://localhost:5000/api/v1/cart/get", {
-        withCredentials: true,
-      });
+      const res = await axios.get(
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/cart/get`,
+        {
+          withCredentials: true,
+        },
+      );
 
       if (res?.data?.success) {
         dispatch(setCart(res.data.cart));

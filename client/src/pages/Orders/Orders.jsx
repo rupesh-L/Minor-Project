@@ -11,9 +11,12 @@ const Orders = () => {
   // Fetch user orders
   const fetchOrders = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/v1/order/get", {
-        withCredentials: true,
-      });
+      const res = await axios.get(
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/order/get`,
+        {
+          withCredentials: true,
+        },
+      );
 
       if (res.data.success) {
         setOrders(res.data.allOrders);
@@ -42,7 +45,7 @@ const Orders = () => {
       setCancelLoading(orderId);
 
       const res = await axios.put(
-        `http://localhost:5000/api/v1/order/update/${orderId}`,
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/order/update/${orderId}`,
         { orderStatus: "CANCELLED", paymentStatus },
         { withCredentials: true },
       );
@@ -118,7 +121,7 @@ const Orders = () => {
                           : "View Details"}
                       </button>
 
-                      {/* ❌ Cancel Button (ONLY when allowed) */}
+                      {/*  Cancel Button (ONLY when allowed) */}
                       {order.orderStatus === "PENDING" && (
                         <button
                           onClick={() =>

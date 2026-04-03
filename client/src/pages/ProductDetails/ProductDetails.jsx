@@ -25,7 +25,9 @@ const BookDetails = () => {
     const fetchBook = async () => {
       try {
         setLoading(true);
-        const res = await axios.get(`http://localhost:5000/api/v1/book/${id}`);
+        const res = await axios.get(
+          `${import.meta.env.VITE_BACKEND_URL}/api/v1/book/${id}`,
+        );
         setBook(res.data.book);
         setRelatedBooks(res.data.suggestions);
       } catch (err) {
@@ -60,7 +62,7 @@ const BookDetails = () => {
     try {
       setSubmittingReview(true);
       const res = await axios.post(
-        `http://localhost:5000/api/v1/book/review/${id}`,
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/book/review/${id}`,
         review,
         { withCredentials: true },
       );
@@ -94,7 +96,7 @@ const BookDetails = () => {
       setAddingToCart(true);
 
       const res = await axios.post(
-        "http://localhost:5000/api/v1/cart",
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/cart`,
         {
           bookId: book._id,
           quantity: 1,

@@ -12,11 +12,11 @@ const Home = () => {
       try {
         setLoading(true);
         const res = await axios.get(
-          "http://localhost:5000/api/v1/book?limit=8",
+          `${import.meta.env.VITE_BACKEND_URL}/api/v1/book?limit=8`,
         );
 
         const bestSellerRes = await axios.get(
-          "http://localhost:5000/api/v1/bestseller",
+          `${import.meta.env.VITE_BACKEND_URL}/api/v1/bestseller`,
         );
         setBestSellerBooks(bestSellerRes.data.populatedBestSeller || []);
         setBooks(res.data.books || []);

@@ -29,9 +29,12 @@ const Shop = () => {
         maxPrice: maxPrice || undefined,
       };
 
-      const res = await axios.get("http://localhost:5000/api/v1/book", {
-        params,
-      });
+      const res = await axios.get(
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/book`,
+        {
+          params,
+        },
+      );
 
       setBooks(res.data.books || []);
       setTotalPages(res.data.totalPages || 1);

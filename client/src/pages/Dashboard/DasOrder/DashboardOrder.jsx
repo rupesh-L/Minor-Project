@@ -25,11 +25,11 @@ const DashboardOrder = () => {
     }
   }, [initialOrders, fetchSummary]);
 
-  // 🔍 Fetch filtered orders
+  //  Fetch filtered orders
   const fetchFilteredOrders = async (status) => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/v1/admin/orders?status=${status}`,
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/admin/orders?status=${status}`,
         { withCredentials: true },
       );
 
@@ -71,7 +71,7 @@ const DashboardOrder = () => {
   const handleUpdate = async (orderId) => {
     try {
       const res = await axios.put(
-        `http://localhost:5000/api/v1/order/update/${orderId}`,
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/order/update/${orderId}`,
         formData,
         { withCredentials: true },
       );

@@ -77,7 +77,7 @@ const DashboardBook = () => {
       }
 
       const res = await axios.put(
-        `http://localhost:5000/api/v1/book/update/${bookId}`,
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/book/update/${bookId}`,
         data,
         {
           withCredentials: true,

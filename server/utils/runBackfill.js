@@ -9,7 +9,7 @@ async function runWithProgress() {
   console.log(process.env.ATLAS_URI);
   try {
     await mongoose.connect(
-      "mongodb+srv://rupeslekhy_db_user:MZlusrAiXxtmmcmH@books.t5pdmyl.mongodb.net/book_store",
+      process.env.ATLAS_URI
     );
     console.log("✅ Connected to MongoDB");
 
